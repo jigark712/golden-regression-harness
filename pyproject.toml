@@ -1,0 +1,13 @@
+[project]
+name = "golden-regression-harness"
+version = "0.1.0"
+description = "Golden-file regression harness with fault injection and CI artifacts"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
