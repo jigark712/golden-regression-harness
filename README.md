@@ -1,43 +1,30 @@
 ![tests](https://github.com/jigark712/golden-regression-harness/actions/workflows/tests.yml/badge.svg)
 
-# Golden Regression Harness (Golden Files + Fault Injection)
+# Golden Regression Harness
 
-A production-style Python testing harness that detects integration regressions by comparing outputs against versioned golden baselines. Includes fault injection scenarios to validate error handling, and runs in GitHub Actions with an uploaded HTML test report artifact.
+A Python test harness for integration regression testing using versioned golden baselines. It generates deterministic telemetry, compares outputs against an expected baseline, and includes fault injection cases to validate robustness.
 
-## Overview
-This project demonstrates:
-- deterministic telemetry generation (seeded output)
-- golden baseline regression testing (goldens/baseline.json)
-- negative-path testing via fault injection (timeout/noise/malformed)
-- CI automation in GitHub Actions (pytest + HTML report + artifacts)
+## What it does
+- Compares current output against `goldens/baseline.json` to detect regressions
+- Exercises negative paths with fault injection (timeout, noise, malformed payload)
+- Runs automatically in GitHub Actions
 
-## Repository structure
-- src/harness/  telemetry generator and golden comparison utilities
-- tests/        golden regression test and fault injection tests
-- goldens/      versioned baseline outputs (baseline.json)
-- .github/      CI workflow files
-- docs/         optional published HTML report for GitHub Pages
+## Project structure
+- `src/harness/` — telemetry generator and golden comparison utilities
+- `tests/` — regression and fault-injection tests
+- `goldens/` — baseline output used for regression checks
+- `.github/workflows/` — CI configuration
 
-## Run locally
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -U pip setuptools wheel pytest
-pip install -e .
-pytest -q
+## Run and test locally
+Prereqs: Python 3.10+.
 
-## Update golden baselines
-UPDATE_GOLDENS=1 pytest -q
+1) Create and activate a virtual environment
+   python3 -m venv .venv
+   source .venv/bin/activate
 
-## Generate an HTML report locally
-pip install pytest-html
-pytest -q --html=report.html --self-contained-html
-open report.html
+2) Install dependencies and the package
+   python -m pip install -U pip setuptools wheel pytest
+   python -m pip install -e .
 
-## View the HTML report from CI
-Actions -> latest run -> Artifacts -> download test-report-and-goldens -> open report.html
-
-## Publish the HTML report via GitHub Pages (optional)
-Generate docs/report.html and commit it, then enable Pages: Settings -> Pages -> main branch -> /docs
-
-Live URL (after enabling Pages):
-https://jigark712.github.io/golden-regression-harness/report.html
+3) Run tests
+   pytest -q
