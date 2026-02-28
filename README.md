@@ -2,6 +2,9 @@
 
 # Golden Regression Harness
 
+
+## Links
+- Live HTML Test Report: https://jigark712.github.io/golden-regression-harness/report.html
 A Python test harness for integration regression testing using versioned golden baselines. It generates deterministic telemetry, compares outputs against an expected baseline, and includes fault injection cases to validate robustness.
 
 ## What it does
