@@ -1,4 +1,4 @@
-from src.harness.simulator import SimConfig, simulate_telemetry
+from harness.simulator import SimConfig, simulate_telemetry
 
 
 def test_fault_timeout():

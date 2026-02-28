@@ -1,6 +1,6 @@
 import os
-from src.harness.compare import deep_equal, load_json, write_json
-from src.harness.simulator import SimConfig, simulate_telemetry
+from harness.compare import deep_equal, load_json, write_json
+from harness.simulator import SimConfig, simulate_telemetry
 
 GOLDEN_PATH = "goldens/baseline.json"
 
